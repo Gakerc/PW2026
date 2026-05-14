@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitZone</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a class="logo" href="index.html"><img src="img/FitZone_Logo_FIX.png"></a>
+            <ul>
+                <li><a href="index.html" class="navbar_btn" >Home</a></li>
+                <li><a href="abbonamenti.html" class="navbar_btn">Abbonamenti</a></li>
+                <li><a href="iscriviti.html" class="navbar_btn" id="current_page">Iscriviti</a></li>
+                <li><a href="contatti.html" class="btn" class="navbar_btn">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="page-bg">
+        <section class="form-section">
+            <h2>Iscriviti</h2>
+
+            <form id="formPalestra">
+                <label>Nome:</label>
+                <input type="text" id="nome" required>
+                
+                <label>Cognome:</label>
+                <input type="text" id="cognome" required>
+
+                <label>Età:</label>
+                <input type="number" id="eta" required>
+
+                <label>Accessi settimanali:</label>
+                <input type="number" id="accessi" required>
+
+                <label>Fascia oraria:</label>
+                <select id="fascia">
+                    <option value="1">Mattina</option>
+                    <option value="2">Pomeriggio</option>
+                    <option value="3">Sera</option>
+                </select>
+
+                <button type="submit" class="btn">Invia</button>
+            </form>
+
+            <p id="limitazioni"></p>
+            <p id="messaggio"></p>
+        </section>
+    </section>
+
+    <footer>
+        <p>© 2026 FitZone - Tutti i diritti riservati</p>
+    </footer>
+
+<script>
+document.getElementById("formPalestra").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let nome = document.getElementById("nome").value;
+    let eta = parseInt(document.getElementById("eta").value);
+    let accessi = parseInt(document.getElementById("accessi").value);
+    let fascia = parseInt(document.getElementById("fascia").value);
+
+    let messaggio = "";
+    let limitazioni = "";
+
+    if (accessi < 1 && accessi > 7) {
+        messaggio = "Pacchetto non valido";
+    } 
+    else if (eta < 14) {
+        messaggio = "Accesso non consentito, Età insufficente";
+    } 
+    else if (accessi < 3 && fascia === 3) {
+        messaggio = "Fascia serale richiede almeno 3 accessi settimanali.";
+    } 
+    else if (eta < 16) {
+        limitazioni = "Limitazione: Sala pesi non consentito.";
+        messaggio = "Iscrizione accettata, Benvenuto <b>" + nome + "</b>!";
+    }
+    else {
+        messaggio = "Iscrizione accettata, Benvenuto <b>" + nome + "</b>!";
+    }
+    
+
+    document.getElementById("limitazioni").innerText = limitazioni;
+    document.getElementById("messaggio").innerHTML = messaggio;
+});
+</script>
+
+
+</body>
+</html>
