@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="Algoritmo"/>
+        <attribute name="authors" value="matte"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2026-04-28 08:47:50 "/>
+        <attribute name="created" value="bWF0dGU7TEFQVE9QLVMzN0w2NDBKOzIwMjYtMDQtMjc7IjAxOjI2OjI5ICI7MjczOQ=="/>
+        <attribute name="edited" value="bWF0dGU7TEFQVE9QLVMzN0w2NDBKOzIwMjYtMDQtMjg7IjA4OjQ3OjUwICI7MTM7MjkwMw=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="nome, cognome" type="String" array="False" size=""/>
+            <declare name="anni, accessiSettimanali, fasciaOraria" type="Integer" array="False" size=""/>
+            <output expression="&quot;Inserisci nome: &quot;" newline="True"/>
+            <input variable="nome"/>
+            <output expression="&quot;Inserisci cognome: &quot;" newline="True"/>
+            <input variable="cognome"/>
+            <output expression="&quot;Inserisci l'et&#224;: &quot;" newline="True"/>
+            <input variable="anni"/>
+            <if expression="anni &lt; 14">
+                <then>
+                    <output expression="&quot;Accesso non consentito, Et&#224; insufficente&quot;" newline="True"/>
+                    <breakpoint expression="" always="True"/>
+                </then>
+                <else/>
+            </if>
+            <output expression="&quot;Inserisci accessi a settimana: &quot;" newline="True"/>
+            <input variable="accessiSettimanali"/>
+            <if expression="accessiSettimanali &lt; 1 or accessiSettimanali &gt; 7">
+                <then>
+                    <output expression="&quot;Pacchetto non valido&quot;" newline="True"/>
+                    <breakpoint expression="" always="True"/>
+                </then>
+                <else/>
+            </if>
+            <output expression="&quot;1 = Mattina (6:00 - 12:00), 2 = Pomeriggio (12:00 - 18:00), 3 = Sera (18:00 - 23:00)&quot;" newline="True"/>
+            <output expression="&quot;Inserisci fascia oraria: &quot;" newline="True"/>
+            <input variable="fasciaOraria"/>
+            <if expression="fasciaOraria &lt; 1 or fasciaOraria &gt; 3">
+                <then>
+                    <output expression="&quot;Fascia oraria non valida&quot;" newline="True"/>
+                    <breakpoint expression="" always="True"/>
+                </then>
+                <else/>
+            </if>
+            <while expression="fasciaOraria == 3 &amp;&amp; accessiSettimanali &lt; 3">
+                <output expression="&quot;Fascia serale richiede almeno 3 accessi settimanali&quot;" newline="True"/>
+                <output expression="&quot;Inserisci accessi a settimana: &quot;" newline="True"/>
+                <input variable="accessiSettimanali"/>
+                <if expression="accessiSettimanali &lt; 1 or accessiSettimanali &gt; 7">
+                    <then>
+                        <output expression="&quot;Pacchetto non valido&quot;" newline="True"/>
+                        <breakpoint expression="" always="True"/>
+                    </then>
+                    <else/>
+                </if>
+                <output expression="&quot;1 = Mattina (6:00 - 12:00), 2 = Pomeriggio (12:00 - 18:00), 3 = Sera (18:00 - 23:00)&quot;" newline="True"/>
+                <output expression="&quot;Inserisci fascia oraria: &quot;" newline="True"/>
+                <input variable="fasciaOraria"/>
+                <if expression="fasciaOraria &lt; 1 or fasciaOraria &gt; 3">
+                    <then>
+                        <output expression="&quot;Fascia oraria non valida&quot;" newline="True"/>
+                        <breakpoint expression="" always="True"/>
+                    </then>
+                    <else/>
+                </if>
+            </while>
+            <if expression="anni &lt; 16">
+                <then>
+                    <output expression="&quot;Limitazione: Sala pesi non consentito.&quot;" newline="True"/>
+                </then>
+                <else/>
+            </if>
+            <output expression="&quot;Accesso consentito.&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
