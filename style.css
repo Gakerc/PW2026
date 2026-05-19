@@ -209,8 +209,23 @@ form button {
     font-weight: bold;
 }
 
-.featured {
-    border: 2px solid #fe7303;
+.featured{
+    border: 3px solid #fe7303;
+    position: relative;
+}
+
+
+.best-seller {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 75px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #fe7303;
+    background: rgba(230, 57, 70, 0.08);
+    padding: 2px 8px;
+    border-radius: 20px;
 }
 
 .contact-form textarea {
