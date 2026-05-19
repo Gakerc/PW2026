@@ -70,7 +70,7 @@ document.getElementById("formPalestra").addEventListener("submit", function(e) {
     let messaggio = "";
     let limitazioni = "";
 
-    if (accessi < 1 && accessi > 7) {
+    if (accessi < 1 || accessi > 7) {
         messaggio = "Pacchetto non valido";
     } 
     else if (eta < 14) {
